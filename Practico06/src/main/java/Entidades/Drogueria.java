@@ -1,12 +1,11 @@
 package Entidades;
 
+import java.util.List;
 
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class Drogueria {
-    public Map<Medicamento, Integer> proporcionarMedicamentos(Map<Medicamento, Integer> pedido) {
+    public List<Medicamento> proporcionarMedicamentos(List<Medicamento> pedido) {
         return pedido;
     }
 }

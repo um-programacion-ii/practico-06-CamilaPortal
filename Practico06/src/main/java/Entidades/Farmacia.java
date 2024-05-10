@@ -1,6 +1,7 @@
 package Entidades;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,21 +11,41 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Farmacia {
-    private Map<Medicamento, Integer> stock;
+    private List<Medicamento> stock;
 
     public void restarMedicamentos(Medicamento medicamento, int cantidad) {
-        if (stock.containsKey(medicamento)) {
-            int stockActual = stock.get(medicamento);
-            stock.put(medicamento, stockActual - cantidad);
+        for (Medicamento m : stock) {
+            if (m.equals(medicamento)) {
+                m.reducirCantidad(cantidad);
+                return;
+            }
         }
     }
 
-    public void agregarMedicamentos(Medicamento medicamento, int cantidad) {
-        if (stock.containsKey(medicamento)) {
-            int stockActual = stock.get(medicamento);
-            stock.put(medicamento, stockActual + cantidad);
-        } else {
-            stock.put(medicamento, cantidad);
+    public void agregarMedicamento(Medicamento nuevoMedicamento) {
+        boolean encontrado = false;
+        for (Medicamento m : stock) {
+            if (m.equals(nuevoMedicamento)) {
+                m.aumentarCantidad(nuevoMedicamento.getCantidad());
+                encontrado = true;
+                break;
+            }
         }
+        if (!encontrado) {
+            stock.add(nuevoMedicamento);
+        }
+
+        for (Medicamento st : stock) {
+            System.out.println(st);
+        }
+    }
+
+    public boolean tieneSuficienteStock(Medicamento medicamento) {
+        for (Medicamento m : stock) {
+            if (m.equals(medicamento)) {
+                return m.getCantidad() >= medicamento.getCantidad();
+            }
+        }
+        return false;
     }
 }
