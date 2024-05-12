@@ -34,10 +34,6 @@ public class Farmacia {
         if (!encontrado) {
             stock.add(nuevoMedicamento);
         }
-
-        for (Medicamento st : stock) {
-            System.out.println(st);
-        }
     }
 
     public boolean tieneSuficienteStock(Medicamento medicamento) {
