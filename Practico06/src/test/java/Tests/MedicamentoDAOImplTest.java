@@ -1,6 +1,5 @@
-package TestIMPL;
+package Tests;
 
-import DAO.EspecialidadDAO;
 import DAO.MedicamentoDAO;
 import Entidades.Medicamento;
 import Implementaciones.MedicamentoDAOimpl;

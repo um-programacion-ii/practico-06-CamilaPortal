@@ -1,4 +1,4 @@
-package TestIMPL;
+package Tests;
 
 import DAO.TurnoDAO;
 import Entidades.Paciente;
@@ -53,4 +53,27 @@ public class TurnoDAOImpl {
         Assertions.assertNull(this.turnoDAO.leerPorId(1));
     }
 
+    @Test
+    public void buscarTurnoPorMedico() {
+        Medico medico = new Medico(1, "Fernando", "House", new Especialidad(1, "Oncologia"), null, true);
+        List<Turno> turnos = this.turnoDAO.buscarTurnosPorMedico(medico);
+        Assertions.assertEquals(1, turnos.size());
+    }
+
+    @Test
+    public void buscarTurnoPorPaciente() {
+        Paciente paciente = new Paciente(1, "Pepe", "Honguito", null, true);
+        List<Turno> turnos = this.turnoDAO.buscarTurnosPorPaciente(paciente);
+        Assertions.assertEquals(1, turnos.size());
+    }
+
+    @Test
+    public void crear() {
+        Paciente paciente = new Paciente(2, "Juan", "Perez", null, true);
+        Especialidad especialidad = new Especialidad(2, "Cardiologia");
+        Medico medico = new Medico(2, "Juan", "Perez", especialidad, null, true);
+        Turno turno = new Turno(2, paciente, medico, true, true, null);
+        this.turnoDAO.crear(turno);
+        Assertions.assertEquals(2, this.turnoDAO.listarTodos().size());
+    }
 }

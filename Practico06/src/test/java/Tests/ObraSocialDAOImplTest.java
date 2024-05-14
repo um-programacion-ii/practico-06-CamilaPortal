@@ -1,4 +1,4 @@
-package TestIMPL;
+package Tests;
 import DAO.ObraSocialDAO;
 import Entidades.ObraSocial;
 import Implementaciones.ObraSocialDAOimpl;

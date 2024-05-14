@@ -1,4 +1,4 @@
-package TestIMPL;
+package Tests;
 import Entidades.*;
 import Servicios.GestionFarmaciaService;
 

@@ -1,5 +1,4 @@
-package TestIMPL;
-import DAO.PacienteDAO;
+package Tests;
 import DAO.RecetaDAO;
 import Entidades.*;
 import Implementaciones.RecetaDAOimpl;
@@ -63,6 +62,20 @@ public class RecetaDAOImpl {
         Receta recetaActualizada = this.recetaDAO.leerPorId(1);
         Assertions.assertNotNull(recetaActualizada);
         Assertions.assertEquals(nuevaCantidad, recetaActualizada.getMedicamentos().get(0).getCantidad());
+    }
+
+    @Test
+    public void testBuscarRecetasPorPaciente() {
+        Paciente paciente = new Paciente(1, "Pepe", "Honguito", null, true);
+        List<Receta> recetas = this.recetaDAO.buscarRecetasPorPaciente(paciente);
+        Assertions.assertEquals(1, recetas.size());
+    }
+
+    @Test
+    public void testBuscarRecetasPorMedico() {
+        Medico medico = new Medico(1, "Fernando", "House", new Especialidad(1, "Oncologia"), null, true);
+        List<Receta> recetas = this.recetaDAO.buscarRecetasPorMedico(medico);
+        Assertions.assertEquals(1, recetas.size());
     }
 
 }

@@ -12,4 +12,8 @@ public interface MedicoDAO extends DAO<Medico>{
     List<Medico> listarPorObraSocial(ObraSocial obraSocial);
 
     List<Medico> listarSiAtiendeParticular();
+
+    List<Medico> listarPorEspecialidadConObraSocial(Especialidad especialidad, ObraSocial obraSocial);
+
+    List<Medico> listarPorEspecialidadYParticular(Especialidad especialidad);
 }

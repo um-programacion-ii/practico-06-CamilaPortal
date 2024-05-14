@@ -1,4 +1,4 @@
-package TestIMPL;
+package Tests;
 import DAO.EspecialidadDAO;
 import Entidades.Especialidad;
 import Implementaciones.EspecialidadDAOimpl;

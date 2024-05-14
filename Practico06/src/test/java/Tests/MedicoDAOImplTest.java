@@ -1,4 +1,4 @@
-package TestIMPL;
+package Tests;
 import DAO.MedicoDAO;
 import Entidades.Especialidad;
 import Entidades.Medico;
@@ -66,6 +66,34 @@ public class MedicoDAOImplTest {
         ObraSocial osde = new ObraSocial(1, "OSDE");
         List<Medico> medicos = this.medicoDAO.listarPorObraSocial(osde);
         Assertions.assertEquals(2, medicos.size());
+    }
+
+    @Test
+    public void testListarSiAtiendeParticular() {
+        List<Medico> medicos = this.medicoDAO.listarSiAtiendeParticular();
+        Assertions.assertEquals(1, medicos.size());
+    }
+
+    @Test
+    public void testListarPorEspecialidadConObraSocial() {
+        Especialidad cirujano = new Especialidad(1, "Cirujano");
+        ObraSocial osde = new ObraSocial(1, "OSDE");
+        List<Medico> medicos = this.medicoDAO.listarPorEspecialidadConObraSocial(cirujano, osde);
+        Assertions.assertEquals(1, medicos.size());
+    }
+
+    @Test
+    public void testListarPorEspecialidadConObraSociaNull() {
+        Especialidad cirujano = new Especialidad(1, "Cirujano");
+        List<Medico> medicos = this.medicoDAO.listarPorEspecialidadConObraSocial(cirujano, null);
+        Assertions.assertEquals(0, medicos.size());
+    }
+
+    @Test
+    public void testListarPorEspecialidadYParticular() {
+        Especialidad cirujano = new Especialidad(1, "Cirujano");
+        List<Medico> medicos = this.medicoDAO.listarPorEspecialidadYParticular(cirujano);
+        Assertions.assertEquals(1, medicos.size());
     }
 
 }

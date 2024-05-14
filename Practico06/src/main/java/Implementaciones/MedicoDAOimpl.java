@@ -75,4 +75,30 @@ public class MedicoDAOimpl implements MedicoDAO {
         }
         return medicosAtiendenParticular;
     }
+
+    @Override
+    public List<Medico> listarPorEspecialidadConObraSocial(Especialidad especialidad, ObraSocial obraSocialPaciente) {
+        List<Medico> medicosPorEspecialidadConOS = new ArrayList<>();
+        for (Medico medico : medicos.values()) {
+            // Verificar si el médico tiene la especialidad indicada
+            if (medico.getEspecialidad().equals(especialidad)) {
+                // Verificar si el médico atiende la obra social del paciente
+                if (medico.getObrasSociales().contains(obraSocialPaciente)) {
+                    medicosPorEspecialidadConOS.add(medico);
+                }
+            }
+        }
+        return medicosPorEspecialidadConOS;
+    }
+
+    @Override
+    public List<Medico> listarPorEspecialidadYParticular(Especialidad especialidad) {
+        List<Medico> medicosPorEspecialidadYParticular = new ArrayList<>();
+        for (Medico medico : medicos.values()) {
+            if (medico.getEspecialidad().equals(especialidad) && medico.isParticular()) {
+                medicosPorEspecialidadYParticular.add(medico);
+            }
+        }
+        return medicosPorEspecialidadYParticular;
+    }
 }

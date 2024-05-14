@@ -1,4 +1,4 @@
-package TestIMPL;
+package Tests;
 import DAO.PacienteDAO;
 import Entidades.ObraSocial;
 import Entidades.Paciente;
