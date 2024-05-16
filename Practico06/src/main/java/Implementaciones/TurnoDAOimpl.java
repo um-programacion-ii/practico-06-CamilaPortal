@@ -64,4 +64,20 @@ public class TurnoDAOimpl implements TurnoDAO {
         }
         return turnosPorMedico;
     }
+
+    @Override
+    public Turno obtenerUltimoTurno() {
+        Turno ultimoTurno = null;
+        for (Turno turno : turnos.values()) {
+            if (ultimoTurno == null || turno.getId() > ultimoTurno.getId()) {
+                ultimoTurno = turno;
+            }
+        }
+        return ultimoTurno;
+    }
+
+    @Override
+    public void limpiarTurnos() {
+        turnos.clear();
+    }
 }

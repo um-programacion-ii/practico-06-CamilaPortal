@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+
 
 public class Farmacia {
     private List<Medicamento> stock;
+
+    public Farmacia() {
+        this.stock = new ArrayList<>();
+    }
 
     public void restarMedicamentos(Medicamento medicamento, int cantidad) {
         for (Medicamento m : stock) {

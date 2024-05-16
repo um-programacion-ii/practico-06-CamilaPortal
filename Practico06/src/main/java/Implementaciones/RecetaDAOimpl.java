@@ -65,4 +65,14 @@ public class RecetaDAOimpl implements RecetaDAO {
         }
         return recetasPorMedico;
     }
+
+    @Override
+    public Receta obtenerUltimaRecetaPaciente(Paciente paciente) {
+        List<Receta> recetas = buscarRecetasPorPaciente(paciente);
+        if (!recetas.isEmpty()) {
+            return recetas.getLast();
+        } else {
+            return null;
+        }
+    }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,8 +35,8 @@ public class GestionTurnoServiceTest {
         contenedor.getMedicoDAO().crear(medico1);
         contenedor.getMedicoDAO().crear(medico2);
 
-        gestionTurnoService.listarMedicos(paciente, cirujano);
-        assertEquals(2,contenedor.getMedicoDAO().listarPorEspecialidadConObraSocial(cirujano, osde).size());
+        List <Medico> medicosDisponibles =gestionTurnoService.listarMedicos(paciente, cirujano);
+        assertEquals(2, medicosDisponibles.size());
     }
 
     @Test
@@ -51,8 +52,8 @@ public class GestionTurnoServiceTest {
         contenedor.getMedicoDAO().crear(medico1);
         contenedor.getMedicoDAO().crear(medico2);
 
-        gestionTurnoService.listarMedicos(paciente, cirujano);
-        assertEquals(1,contenedor.getMedicoDAO().listarPorEspecialidadYParticular(cirujano).size());
+        List <Medico> medicosDisponibles = gestionTurnoService.listarMedicos(paciente, cirujano);
+        assertEquals(1, medicosDisponibles.size());
     }
 
     @Test

@@ -28,13 +28,14 @@ public class GestionTurnoService {
         return instancia;
     }
 
-    public void listarMedicos(Paciente paciente, Especialidad especialidad) {
+    public List<Medico> listarMedicos(Paciente paciente, Especialidad especialidad) {
         List<Medico> medicosDisponibles;
         if (paciente.getObraSocial() != null) {
             medicosDisponibles = contenedor.getMedicoDAO().listarPorEspecialidadConObraSocial(especialidad, paciente.getObraSocial());
         } else {
             medicosDisponibles = contenedor.getMedicoDAO().listarPorEspecialidadYParticular(especialidad);
         }
+        return medicosDisponibles;
     }
 
     public void generarTurno(Paciente paciente, Medico medico) {

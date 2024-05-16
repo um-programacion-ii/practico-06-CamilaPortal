@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-public class RecetaDAOImpl {
+public class RecetaDAOImplTest {
     private RecetaDAO recetaDAO;
 
     @BeforeEach
@@ -76,6 +76,14 @@ public class RecetaDAOImpl {
         Medico medico = new Medico(1, "Fernando", "House", new Especialidad(1, "Oncologia"), null, true);
         List<Receta> recetas = this.recetaDAO.buscarRecetasPorMedico(medico);
         Assertions.assertEquals(1, recetas.size());
+    }
+
+    @Test
+    public void testObtenerUltimaRecetaPaciente() {
+        Paciente paciente = new Paciente(1, "Pepe", "Honguito", null, true);
+        Receta receta = this.recetaDAO.obtenerUltimaRecetaPaciente(paciente);
+        Assertions.assertNotNull(receta);
+        Assertions.assertEquals(1, receta.getId());
     }
 
 }
