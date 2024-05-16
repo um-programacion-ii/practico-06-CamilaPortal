@@ -40,7 +40,16 @@ public class GestionTurnoService {
 
     public void generarTurno(Paciente paciente, Medico medico) {
         boolean atencionParticular = paciente.getObraSocial() == null;
-        Turno nuevoTurno = new Turno(paciente, medico,atencionParticular, false, paciente.getObraSocial());
+        int idNuevoTurno = 1;
+        List<Turno> todosLosTurnos = contenedor.getTurnoDAO().listarTodos();
+        if (todosLosTurnos.isEmpty()){
+            idNuevoTurno = 1;
+        }
+        else {
+            idNuevoTurno = todosLosTurnos.get(todosLosTurnos.size() - 1).getId() + 1;
+        }
+
+        Turno nuevoTurno = new Turno(idNuevoTurno, paciente, medico,false, atencionParticular, paciente.getObraSocial());
         contenedor.getTurnoDAO().crear(nuevoTurno);
     }
 

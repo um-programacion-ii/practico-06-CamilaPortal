@@ -23,7 +23,7 @@ public class AtencionMedicoServiceTest {
     public void testComenzarAtencion_() {
         Paciente paciente = new Paciente();
         Medico medico = new Medico();
-        Turno turno = new Turno(paciente, medico, false, false, null);
+        Turno turno = new Turno(1,paciente, medico, false, false, null);
         contenedor.getTurnoDAO().crear(turno);
 
         atencionMedicoService.comenzarAtencion(turno);
@@ -35,7 +35,7 @@ public class AtencionMedicoServiceTest {
     public void testComenzarAtencion_TurnoActivo() {
         Paciente paciente = new Paciente();
         Medico medico = new Medico();
-        Turno turno = new Turno(paciente, medico, true, true, null);
+        Turno turno = new Turno(1, paciente, medico, true, true, null);
         contenedor.getTurnoDAO().crear(turno);
 
         atencionMedicoService.comenzarAtencion(turno);
@@ -47,7 +47,7 @@ public class AtencionMedicoServiceTest {
     public void testFinalizarAtencion_() {
         Paciente paciente = new Paciente();
         Medico medico = new Medico();
-        Turno turno = new Turno(paciente, medico, true, true, null);
+        Turno turno = new Turno(1, paciente, medico, true, true, null);
         contenedor.getTurnoDAO().crear(turno);
 
         atencionMedicoService.finalizarAtencion(turno);
@@ -59,7 +59,7 @@ public class AtencionMedicoServiceTest {
     public void testFinalizarAtencion_TurnoInactivo() {
         Paciente paciente = new Paciente();
         Medico medico = new Medico();
-        Turno turno = new Turno(paciente, medico, false, false, null);
+        Turno turno = new Turno(1, paciente, medico, false, false, null);
         contenedor.getTurnoDAO().crear(turno);
 
         atencionMedicoService.finalizarAtencion(turno);

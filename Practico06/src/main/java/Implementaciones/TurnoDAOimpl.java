@@ -76,8 +76,4 @@ public class TurnoDAOimpl implements TurnoDAO {
         return ultimoTurno;
     }
 
-    @Override
-    public void limpiarTurnos() {
-        turnos.clear();
-    }
 }

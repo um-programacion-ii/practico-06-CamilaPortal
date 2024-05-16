@@ -12,5 +12,5 @@ public interface TurnoDAO extends DAO<Turno>{
     List<Turno> buscarTurnosPorPaciente(Paciente paciente);
     List<Turno> buscarTurnosPorMedico(Medico medico);
     Turno obtenerUltimoTurno();
-    void limpiarTurnos();
+
 }
